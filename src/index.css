@@ -2,4 +2,24 @@ html,
 body,
 #root {
   @apply w-full h-full bg-surface-500;
+  font-family: "Roboto", sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  @apply bg-surface-300;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @apply bg-surface-100;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

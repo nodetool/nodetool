@@ -1,30 +1,32 @@
-import transformerDirective from "@unocss/transformer-directives";
-import UnocssPlugin from "@unocss/vite";
 import Icons from "unplugin-icons/vite";
 import { defineConfig } from "vite";
-import filterReplace from "vite-plugin-filter-replace";
+import ViteFonts from "vite-plugin-fonts";
+import InlineCSSModules from "vite-plugin-inline-css-modules";
+import VitePluginInspect from "vite-plugin-inspect";
 import solidPlugin from "vite-plugin-solid";
+import WindiCSS from "vite-plugin-windicss";
 
 export default defineConfig({
   publicDir: "./public",
   plugins: [
-    solidPlugin(),
-    UnocssPlugin({
-      transformers: [transformerDirective()],
+    VitePluginInspect(),
+    InlineCSSModules({
+      tagName: "css",
     }),
-    Icons({ compiler: "solid" }),
-    filterReplace([
-      {
-        filter: /\.css$/,
-        replace: [
-          (source: string, path: string) =>
-            source.replaceAll(
-              /(?<=--[a-z-0-9]+:[\s]+)rgb\(|(?<=--[a-z-0-9]+:[\s]+rgb\([0-9-a-z,\s]+)\)(?=;?)/gm,
-              ""
-            ),
+    ViteFonts({
+      google: {
+        families: [
+          {
+            name: "Roboto",
+            styles: "ital,wght@0,400;1,200",
+            defer: true,
+          },
         ],
       },
-    ]),
+    }),
+    solidPlugin(),
+    WindiCSS(),
+    Icons({ compiler: "solid" }),
   ],
   build: {
     target: "esnext",

@@ -1,9 +1,6 @@
 import { Component, createContext, useContext } from "solid-js";
 import { createStore } from "solid-js/store";
-
-function tuple<T extends any[]>(...elements: T) {
-  return elements;
-}
+import { tuple } from "../util";
 
 export interface IAppState {
   theme: string;

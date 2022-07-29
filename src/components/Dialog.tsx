@@ -1,6 +1,13 @@
 import { Component, Show } from "solid-js";
 import { Transition } from "solid-transition-group";
+import { inlineCss as css } from "vite-plugin-inline-css-modules";
 import Overlay from "./Overlay";
+
+const classes = css`
+  .dialog {
+    @apply bg-surface-300 max-w-md w-full relative m-auto rounded-md overflow-hidden;
+  }
+`;
 
 const Dialog: Component<{
   open: boolean;
@@ -27,7 +34,7 @@ const Dialog: Component<{
       <Show when={props.open}>
         <Overlay center onClick={props.close}>
           <div
-            class="bg-surface-300 max-w-md w-full relative m-auto rounded-md overflow-hidden"
+            class={classes.dialog}
             classList={{ "p-8": !props.noPadding }}
             onClick={(e) => e.stopPropagation()}
           >

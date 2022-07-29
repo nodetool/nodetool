@@ -1,7 +1,0 @@
-.add-list-item {
-  @apply cursor-pointer hover:bg-primary-base p-3 bg-surface-200 rounded-lg;
-}
-
-.gutter {
-  @apply cursor-pointer bg-surface-200;
-}

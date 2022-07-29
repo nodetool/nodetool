@@ -1,3 +1,8 @@
+import {
+  DragDropProvider,
+  DragDropSensors,
+  DragOverlay,
+} from "@thisbeyond/solid-dnd";
 import { Component, createComputed } from "solid-js";
 import CommandPalette from "./CommandPalette";
 import { useAppStore } from "./store/app";
@@ -14,10 +19,14 @@ const App: Component = () => {
   });
 
   return (
-    <>
+    <DragDropProvider>
+      <DragDropSensors />
       <NodeGraph />
       <CommandPalette />
-    </>
+      <DragOverlay>
+        <div class="bg-primary-base bg-opacity-20 h-full w-full border-2 border-primary-light rounded-md shadow-primary-light/20 shadow-lg"></div>
+      </DragOverlay>
+    </DragDropProvider>
   );
 };
 

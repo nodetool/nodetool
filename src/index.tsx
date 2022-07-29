@@ -1,6 +1,6 @@
-import "@unocss/reset/tailwind.css";
 import { render } from "solid-js/web";
-import "uno.css";
+import "virtual:fonts.css";
+import "virtual:windi.css";
 import App from "./App";
 import "./index.css";
 import { AppStateProvider } from "./store/app";

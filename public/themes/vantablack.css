@@ -11,5 +11,9 @@ html {
   --primary-light: 172, 133, 255;
   --primary-dark: 86, 3, 252;
 
+  --secondary-base: 230, 0, 255;
+  --secondary-light: 238, 84, 255;
+  --secondary-dark: 23, 127, 179;
+
   color: white;
 }

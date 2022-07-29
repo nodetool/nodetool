@@ -1,9 +1,9 @@
 import {
   children,
-  Component,
   createEffect,
   createSignal,
   mergeProps,
+  ParentComponent,
 } from "solid-js";
 import { css } from "solid-styled-components";
 
@@ -17,7 +17,7 @@ const hexToRgb = (hex: string) =>
     .match(/.{2}/g)!
     .map((x) => parseInt(x, 16)) as [number, number, number];
 
-export const Shimmer: Component<{
+export const Shimmer: ParentComponent<{
   opacity?: number;
   color?: string;
   waveTimeMs?: number;

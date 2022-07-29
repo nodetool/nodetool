@@ -1,17 +1,22 @@
-import { children, Component, createEffect, onCleanup } from "solid-js";
+import {
+  children,
+  onCleanup,
+  onMount,
+  ParentComponent,
+  splitProps,
+} from "solid-js";
 import split from "split.js";
 
-export const Split: Component<
+export const Split: ParentComponent<
   {
     gutterClass?: string;
   } & Split.Options
 > = (props) => {
   const c = children(() => props.children);
 
-  createEffect(async () => {
-    const children = c() as HTMLElement[];
-    const { children: _, ...rest } = props;
-    const inst = split([...children], {
+  onMount(() => {
+    const [_, rest] = splitProps(props, ["children"]);
+    const inst = split(c() as HTMLElement[], {
       gutter: (index, direction) => {
         const gutter = document.createElement("div");
         gutter.className = props.gutterClass || `gutter gutter-${direction}`;
@@ -22,5 +27,5 @@ export const Split: Component<
     onCleanup(() => inst.destroy());
   });
 
-  return <>{c()}</>;
+  return c;
 };

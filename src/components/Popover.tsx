@@ -6,17 +6,17 @@ import {
 } from "@floating-ui/dom";
 import {
   children,
-  Component,
   createEffect,
   createSignal,
   JSX,
   on,
   onCleanup,
+  ParentComponent,
   Show,
 } from "solid-js";
 import Overlay from "./Overlay";
 
-const Popover: Component<{
+const Popover: ParentComponent<{
   activator: JSX.Element;
   placement?: ComputePositionConfig["placement"];
   offset?: number;
@@ -39,7 +39,6 @@ const Popover: Component<{
   };
 
   createEffect(() => {
-    console.log("meow");
     const activator = a() as HTMLElement;
     activator.addEventListener("click", () => setOpen(true));
   });
