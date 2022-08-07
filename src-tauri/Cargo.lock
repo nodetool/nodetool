@@ -57,6 +57,8 @@ checksum = "c794e162a5eff65c72ef524dfe393eb923c354e350bb78b9c7383df13f3bc142"
 name = "app"
 version = "0.1.0"
 dependencies = [
+ "nodetool-sdk",
+ "parking_lot",
  "serde",
  "serde_json",
  "tauri",
@@ -1227,6 +1229,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "inner"
+version = "0.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d9368e93322f271c5ca078ed2ddcfad3511f1a40f564e522ade34e6e5c8e6680"
+
+[[package]]
 name = "instant"
 version = "0.1.12"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1532,6 +1540,16 @@ name = "new_debug_unreachable"
 version = "1.0.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e4a24736216ec316047a1fc4252e27dabb04218aa4a3f37c6e7ddbf1f9782b54"
+
+[[package]]
+name = "nodetool-sdk"
+version = "0.1.0"
+dependencies = [
+ "inner",
+ "serde",
+ "smol_str",
+ "thiserror",
+]
 
 [[package]]
 name = "nodrop"
@@ -2524,6 +2542,15 @@ name = "smallvec"
 version = "1.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2fd0db749597d91ff862fd1d55ea87f7855a744a8425a64695b6fca237d1dad1"
+
+[[package]]
+name = "smol_str"
+version = "0.1.23"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7475118a28b7e3a2e157ce0131ba8c5526ea96e90ee601d9f6bb2e286a35ab44"
+dependencies = [
+ "serde",
+]
 
 [[package]]
 name = "soup2"
