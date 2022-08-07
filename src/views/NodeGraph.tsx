@@ -1,11 +1,10 @@
-import * as d3 from "d3";
-import { D3ZoomEvent } from "d3";
+import { D3ZoomEvent, select as d3select, zoom as d3zoom } from "d3";
 import { Component, createSignal, For, onMount } from "solid-js";
-import { inlineCss as css } from "vite-plugin-inline-css-modules";
+import { css } from "vite-plugin-inline-css-modules";
 import { Split } from "../components/Split";
 import { useDragEnd } from "../composeables/drag";
+import { INode, ParameterType } from "../logic/sdk";
 import { useAppStore } from "../store/app";
-import { INodeInstance as INode, ParameterType } from "../store/nodes";
 import { NodeComponent } from "./Node";
 import NodeDrawer from "./NodeDrawer";
 
@@ -53,6 +52,7 @@ const NodeGraph: Component = (props) => {
         height: 2,
         node: {
           name: draggable.id as string,
+          category: [],
           inputs: [
             {
               name: "number 1",
@@ -81,11 +81,10 @@ const NodeGraph: Component = (props) => {
   const onNodeMove = (idx: number, ev: MouseEvent) => {};
 
   onMount(() => {
-    const svg = d3.select(graph!);
-    const content = d3.select(g!);
-    const dotsSelection = d3.select(dots!);
-    let zoom = d3
-      .zoom<SVGSVGElement, unknown>()
+    const svg = d3select(graph!);
+    const content = d3select(g!);
+    const dotsSelection = d3select(dots!);
+    let zoom = d3zoom<SVGSVGElement, unknown>()
       .on("zoom", ({ transform }: D3ZoomEvent<SVGSVGElement, unknown>) => {
         graphZoom = transform.k;
         panX = transform.x;

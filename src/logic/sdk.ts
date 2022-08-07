@@ -12,12 +12,13 @@ interface INodeParameter {
   type: ParameterType;
 }
 
-export interface INodeInstance {
+export interface INode {
   inputs: INodeParameter[];
   outputs: INodeParameter[];
   name: string;
+  category: string[];
 }
 
 export interface SDK {
-  get_available_nodes(): INodeInstance[];
+  get_available_nodes(): INode[];
 }

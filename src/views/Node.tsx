@@ -1,8 +1,8 @@
 import { Component, For, JSX } from "solid-js";
-import { inlineCss as css } from "vite-plugin-inline-css-modules";
+import { css } from "vite-plugin-inline-css-modules";
 import IconTrash from "~icons/carbon/trash-can";
 import { DraggableSvgElement } from "../components/DraggableSvgElement";
-import { INodeInstance, ParameterType } from "../store/nodes";
+import { INode, ParameterType } from "../logic/sdk";
 
 const ParameterColors: Record<number, string> = Object.freeze({
   [ParameterType.None]: "bg-white",
@@ -41,7 +41,7 @@ export const NodeComponent: Component<
     backgroundColor: string;
     onDrag?: (ev: MouseEvent) => void;
     onDelete?: () => void;
-    node: INodeInstance;
+    node: INode;
   } & JSX.RectSVGAttributes<SVGSVGElement>
 > = (props) => {
   return (
